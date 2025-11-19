@@ -16,10 +16,10 @@
     "top_position_ratio": 1.88
   },
   "PORT3": {
-    "last_updated": "2025-11-19 22:58:10",
+    "last_updated": "2025-11-19 23:01:10",
     "long_short_ratio": 1.05,
-    "open_interest": 23262988.184,
-    "price": 0.03491,
+    "open_interest": 23323080.5254,
+    "price": 0.03495,
     "top_account_ratio": 0.98,
     "top_position_ratio": 0.47
   },
@@ -32,10 +32,10 @@
     "top_position_ratio": 1.52
   },
   "SOLV": {
-    "last_updated": "2025-11-19 22:58:17",
+    "last_updated": "2025-11-19 23:01:16",
     "long_short_ratio": 0.62,
-    "open_interest": 19646803.9741,
-    "price": 0.01643,
+    "open_interest": 19655493.3996,
+    "price": 0.01647,
     "top_account_ratio": 0.71,
     "top_position_ratio": 1.46
   },
