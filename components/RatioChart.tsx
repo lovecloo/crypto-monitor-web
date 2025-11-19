@@ -107,8 +107,8 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
       {/* 指标卡片 */}
       <div className="flex gap-3 mb-4">
         <RatioCard title="全网多空比" change={changes.longShort} color="green" />
-        <RatioCard title="大户账户比" change={changes.topAccount} color="orange" />
-        <RatioCard title="大户持仓比" change={changes.topPosition} color="red" />
+        <RatioCard title="大户账户多空比" change={changes.topAccount} color="orange" />
+        <RatioCard title="大户持仓多空比" change={changes.topPosition} color="red" />
       </div>
       <ReactECharts option={option} style={{ height: '300px' }} />
     </div>
