@@ -1,50 +1,50 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-19 22:31:27",
-    "long_short_ratio": 1.285,
-    "open_interest": 11326064.1631,
-    "price": 0.002718,
-    "top_account_ratio": 1.51,
-    "top_position_ratio": 1.22
+    "last_updated": "2025-11-19 22:34:27",
+    "long_short_ratio": 1.27,
+    "open_interest": 11351267.2111,
+    "price": 0.002732,
+    "top_account_ratio": 1.49,
+    "top_position_ratio": 1.21
   },
   "PLAY": {
-    "last_updated": "2025-11-19 22:31:35",
-    "long_short_ratio": 1.73,
-    "open_interest": 2654669.9428,
-    "price": 0.0289,
+    "last_updated": "2025-11-19 22:34:34",
+    "long_short_ratio": 1.72,
+    "open_interest": 2663559.676,
+    "price": 0.02904,
     "top_account_ratio": 1.57,
     "top_position_ratio": 1.88
   },
   "PORT3": {
-    "last_updated": "2025-11-19 22:29:27",
+    "last_updated": "2025-11-19 22:32:27",
     "long_short_ratio": 1.05,
-    "open_interest": 23152770.6431,
+    "open_interest": 23159932.5141,
     "price": 0.03483,
     "top_account_ratio": 0.97,
     "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 22:30:34",
-    "long_short_ratio": 1.18,
-    "open_interest": 10455670.214,
-    "price": 0.02352,
-    "top_account_ratio": 0.97,
-    "top_position_ratio": 1.54
+    "last_updated": "2025-11-19 22:33:34",
+    "long_short_ratio": 1.185,
+    "open_interest": 10554939.1683,
+    "price": 0.02381,
+    "top_account_ratio": 0.98,
+    "top_position_ratio": 1.55
   },
   "SOLV": {
-    "last_updated": "2025-11-19 22:29:34",
+    "last_updated": "2025-11-19 22:32:33",
     "long_short_ratio": 0.63,
-    "open_interest": 19788189.0431,
-    "price": 0.01626,
+    "open_interest": 19814169.1929,
+    "price": 0.0163,
     "top_account_ratio": 0.72,
     "top_position_ratio": 1.45
   },
   "TAG": {
-    "last_updated": "2025-11-19 22:30:27",
-    "long_short_ratio": 1.47,
-    "open_interest": 5312981.1764,
-    "price": 0.0005452,
-    "top_account_ratio": 1.35,
+    "last_updated": "2025-11-19 22:33:27",
+    "long_short_ratio": 1.46,
+    "open_interest": 5346296.836,
+    "price": 0.0005485,
+    "top_account_ratio": 1.32,
     "top_position_ratio": 1.62
   }
 }
