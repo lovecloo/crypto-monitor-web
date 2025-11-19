@@ -77,8 +77,8 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
               <th className="px-4 py-3 text-right font-semibold text-gray-700">价格</th>
               <th className="px-4 py-3 text-right font-semibold text-gray-700">持仓量</th>
               <th className="px-4 py-3 text-right font-semibold text-gray-700">全网多空比</th>
-              <th className="px-4 py-3 text-right font-semibold text-gray-700">大户账户</th>
-              <th className="px-4 py-3 text-right font-semibold text-gray-700">大户持仓</th>
+              <th className="px-4 py-3 text-right font-semibold text-gray-700">大户账户多空比</th>
+              <th className="px-4 py-3 text-right font-semibold text-gray-700">大户持仓多空比</th>
             </tr>
           </thead>
           <tbody className="bg-white">
