@@ -24,10 +24,10 @@
     "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 22:50:19",
-    "long_short_ratio": 1.23,
-    "open_interest": 9912495.6733,
-    "price": 0.02312,
+    "last_updated": "2025-11-19 22:53:18",
+    "long_short_ratio": 1.245,
+    "open_interest": 9911167.1999,
+    "price": 0.0231,
     "top_account_ratio": 1.0,
     "top_position_ratio": 1.52
   },
@@ -40,10 +40,10 @@
     "top_position_ratio": 1.47
   },
   "TAG": {
-    "last_updated": "2025-11-19 22:50:11",
+    "last_updated": "2025-11-19 22:53:10",
     "long_short_ratio": 1.48,
-    "open_interest": 5347696.998,
-    "price": 0.0005465,
+    "open_interest": 5347150.7232,
+    "price": 0.0005492,
     "top_account_ratio": 1.32,
     "top_position_ratio": 1.62
   }
