@@ -1,49 +1,49 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-19 22:37:28",
+    "last_updated": "2025-11-19 22:40:28",
     "long_short_ratio": 1.275,
-    "open_interest": 11397921.9168,
-    "price": 0.00273,
-    "top_account_ratio": 1.49,
-    "top_position_ratio": 1.21
+    "open_interest": 11370432.1421,
+    "price": 0.002722,
+    "top_account_ratio": 1.48,
+    "top_position_ratio": 1.22
   },
   "PLAY": {
-    "last_updated": "2025-11-19 22:37:37",
-    "long_short_ratio": 1.72,
-    "open_interest": 2662300.3166,
+    "last_updated": "2025-11-19 22:40:34",
+    "long_short_ratio": 1.73,
+    "open_interest": 2662526.0703,
     "price": 0.02904,
-    "top_account_ratio": 1.57,
+    "top_account_ratio": 1.58,
     "top_position_ratio": 1.88
   },
   "PORT3": {
-    "last_updated": "2025-11-19 22:35:27",
+    "last_updated": "2025-11-19 22:38:27",
     "long_short_ratio": 1.05,
-    "open_interest": 23082766.2845,
-    "price": 0.03474,
+    "open_interest": 22985589.0408,
+    "price": 0.03461,
     "top_account_ratio": 0.97,
     "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 22:36:35",
-    "long_short_ratio": 1.145,
-    "open_interest": 10552546.9208,
-    "price": 0.02352,
-    "top_account_ratio": 0.98,
+    "last_updated": "2025-11-19 22:39:34",
+    "long_short_ratio": 1.135,
+    "open_interest": 10033572.1251,
+    "price": 0.02252,
+    "top_account_ratio": 0.95,
     "top_position_ratio": 1.55
   },
   "SOLV": {
-    "last_updated": "2025-11-19 22:35:35",
+    "last_updated": "2025-11-19 22:38:34",
     "long_short_ratio": 0.63,
-    "open_interest": 19977523.7856,
+    "open_interest": 19559374.7552,
     "price": 0.01642,
     "top_account_ratio": 0.72,
     "top_position_ratio": 1.44
   },
   "TAG": {
-    "last_updated": "2025-11-19 22:36:27",
+    "last_updated": "2025-11-19 22:39:27",
     "long_short_ratio": 1.46,
-    "open_interest": 5366170.0381,
-    "price": 0.0005503,
+    "open_interest": 5339207.8261,
+    "price": 0.0005478,
     "top_account_ratio": 1.32,
     "top_position_ratio": 1.62
   }
