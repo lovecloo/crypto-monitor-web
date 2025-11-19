@@ -1,49 +1,49 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-19 22:22:28",
+    "last_updated": "2025-11-19 22:25:30",
     "long_short_ratio": 1.33,
-    "open_interest": 11360112.5576,
-    "price": 0.002713,
+    "open_interest": 11276447.1512,
+    "price": 0.002721,
     "top_account_ratio": 1.54,
     "top_position_ratio": 1.21
   },
   "PLAY": {
-    "last_updated": "2025-11-19 22:22:35",
+    "last_updated": "2025-11-19 22:25:39",
     "long_short_ratio": 1.74,
-    "open_interest": 2654646.8029,
-    "price": 0.02902,
+    "open_interest": 2651611.6781,
+    "price": 0.02895,
     "top_account_ratio": 1.58,
     "top_position_ratio": 1.88
   },
   "PORT3": {
-    "last_updated": "2025-11-19 22:14:16",
+    "last_updated": "2025-11-19 22:23:28",
     "long_short_ratio": 1.05,
-    "open_interest": 23088643.1629,
-    "price": 0.03487,
-    "top_account_ratio": 0.97,
-    "top_position_ratio": 0.46
+    "open_interest": 23204284.9785,
+    "price": 0.03491,
+    "top_account_ratio": 0.98,
+    "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 22:21:36",
+    "last_updated": "2025-11-19 22:24:36",
     "long_short_ratio": 1.165,
-    "open_interest": 10506953.6438,
-    "price": 0.02355,
+    "open_interest": 10460498.756,
+    "price": 0.02358,
     "top_account_ratio": 0.98,
     "top_position_ratio": 1.53
   },
   "SOLV": {
-    "last_updated": "2025-11-19 22:14:25",
-    "long_short_ratio": 0.64,
-    "open_interest": 19718331.3049,
-    "price": 0.01621,
+    "last_updated": "2025-11-19 22:23:35",
+    "long_short_ratio": 0.63,
+    "open_interest": 19824132.7375,
+    "price": 0.01628,
     "top_account_ratio": 0.72,
     "top_position_ratio": 1.44
   },
   "TAG": {
-    "last_updated": "2025-11-19 22:21:27",
+    "last_updated": "2025-11-19 22:24:27",
     "long_short_ratio": 1.47,
-    "open_interest": 5348482.7688,
-    "price": 0.0005476,
+    "open_interest": 5340605.1412,
+    "price": 0.0005463,
     "top_account_ratio": 1.34,
     "top_position_ratio": 1.62
   }
