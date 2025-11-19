@@ -94,7 +94,7 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
                 </td>
                 <td className="px-4 py-3 text-right">
                   <div className="flex flex-col items-end">
-                    <span className="font-mono font-semibold text-gray-800">
+                    <span className={`font-mono font-semibold ${row.priceChange > 0 ? 'text-green-600' : row.priceChange < 0 ? 'text-red-600' : 'text-gray-800'}`}>
                       ${row.price?.toFixed(row.price < 1 ? 8 : 5)}
                     </span>
                     {row.priceChange !== 0 && (
