@@ -1,17 +1,17 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-19 22:40:28",
-    "long_short_ratio": 1.275,
-    "open_interest": 11370432.1421,
-    "price": 0.002722,
+    "last_updated": "2025-11-19 22:48:13",
+    "long_short_ratio": 1.265,
+    "open_interest": 11441142.2364,
+    "price": 0.002728,
     "top_account_ratio": 1.48,
-    "top_position_ratio": 1.22
+    "top_position_ratio": 1.23
   },
   "PLAY": {
-    "last_updated": "2025-11-19 22:40:34",
+    "last_updated": "2025-11-19 22:48:20",
     "long_short_ratio": 1.73,
-    "open_interest": 2662526.0703,
-    "price": 0.02904,
+    "open_interest": 2669864.199,
+    "price": 0.02913,
     "top_account_ratio": 1.58,
     "top_position_ratio": 1.88
   },
