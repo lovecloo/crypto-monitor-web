@@ -24,12 +24,12 @@
     "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 23:14:17",
-    "long_short_ratio": 1.255,
-    "open_interest": 9740488.2706,
-    "price": 0.02274,
-    "top_account_ratio": 1.01,
-    "top_position_ratio": 1.52
+    "last_updated": "2025-11-19 23:17:18",
+    "long_short_ratio": 1.265,
+    "open_interest": 9764210.9393,
+    "price": 0.02284,
+    "top_account_ratio": 1.03,
+    "top_position_ratio": 1.51
   },
   "SOLV": {
     "last_updated": "2025-11-19 23:16:16",
@@ -40,11 +40,11 @@
     "top_position_ratio": 1.46
   },
   "TAG": {
-    "last_updated": "2025-11-19 23:14:10",
-    "long_short_ratio": 1.5,
-    "open_interest": 5237931.2267,
-    "price": 0.0005465,
-    "top_account_ratio": 1.36,
+    "last_updated": "2025-11-19 23:17:10",
+    "long_short_ratio": 1.49,
+    "open_interest": 5246022.0676,
+    "price": 0.0005461,
+    "top_account_ratio": 1.35,
     "top_position_ratio": 1.62
   }
 }
