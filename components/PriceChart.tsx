@@ -65,9 +65,11 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
     },
     legend: {
       data: ['价格', '持仓量'],
-      top: 45,
-      left: 20,
-      itemGap: 20
+      top: 50,
+      left: 'center',
+      itemGap: 30,
+      itemWidth: 25,
+      itemHeight: 14
     },
     xAxis: {
       type: 'category',
@@ -82,15 +84,18 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
     yAxis: [
       {
         type: 'value',
-        name: '价格',
         position: 'left',
         axisLabel: {
           formatter: (value: number) => `$${value.toFixed(6)}`
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#3b82f6'
+          }
         }
       },
       {
         type: 'value',
-        name: '持仓量',
         position: 'right',
         axisLabel: {
           formatter: (value: number) => {
@@ -98,6 +103,11 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
               return `$${(value / 1000000).toFixed(1)}M`;
             }
             return `$${(value / 1000).toFixed(0)}K`;
+          }
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#f59e0b'
           }
         }
       }
@@ -131,7 +141,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         itemStyle: { color: '#f59e0b' }
       }
     ],
-    grid: { left: '10%', right: '12%', bottom: '15%', top: '28%' }
+    grid: { left: '10%', right: '12%', bottom: '15%', top: '30%' }
   };
 
   return (
