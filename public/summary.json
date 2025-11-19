@@ -1,9 +1,9 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-19 23:45:52",
+    "last_updated": "2025-11-19 23:47:52",
     "long_short_ratio": 1.245,
-    "open_interest": 10941870.1193,
-    "price": 0.002665,
+    "open_interest": 10956498.5359,
+    "price": 0.002678,
     "top_account_ratio": 1.48,
     "top_position_ratio": 1.21
   },
@@ -24,10 +24,10 @@
     "top_position_ratio": 0.47
   },
   "SKYAI": {
-    "last_updated": "2025-11-19 23:45:44",
+    "last_updated": "2025-11-19 23:47:45",
     "long_short_ratio": 1.23,
-    "open_interest": 9484685.4995,
-    "price": 0.02247,
+    "open_interest": 9438004.2117,
+    "price": 0.02238,
     "top_account_ratio": 1.02,
     "top_position_ratio": 1.55
   },
@@ -40,10 +40,10 @@
     "top_position_ratio": 1.46
   },
   "TAG": {
-    "last_updated": "2025-11-19 23:45:36",
+    "last_updated": "2025-11-19 23:47:36",
     "long_short_ratio": 1.54,
-    "open_interest": 5103748.7672,
-    "price": 0.0005311,
+    "open_interest": 5114677.383,
+    "price": 0.0005322,
     "top_account_ratio": 1.4,
     "top_position_ratio": 1.62
   }
