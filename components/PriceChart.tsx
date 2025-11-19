@@ -65,8 +65,9 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
     },
     legend: {
       data: ['价格', '持仓量'],
-      top: 40,
-      left: 20
+      top: 45,
+      left: 20,
+      itemGap: 20
     },
     xAxis: {
       type: 'category',
@@ -130,7 +131,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         itemStyle: { color: '#f59e0b' }
       }
     ],
-    grid: { left: '10%', right: '12%', bottom: '15%', top: '25%' }
+    grid: { left: '10%', right: '12%', bottom: '15%', top: '28%' }
   };
 
   return (
