@@ -7,16 +7,23 @@ const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });
 
 interface PriceChartProps {
   data: Array<{ time: string; value: number }>;
+  openInterestData: Array<{ time: string; value: number }>;
   timeRange: number;
   coinSymbol: string;
 }
 
-export default function PriceChart({ data, timeRange, coinSymbol }: PriceChartProps) {
+export default function PriceChart({ data, openInterestData, timeRange, coinSymbol }: PriceChartProps) {
   const filteredData = useMemo(() => {
     if (!data) return [];
     const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
     return data.filter(d => new Date(d.time).getTime() >= cutoffTime);
   }, [data, timeRange]);
+
+  const filteredOIData = useMemo(() => {
+    if (!openInterestData) return [];
+    const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
+    return openInterestData.filter(d => new Date(d.time).getTime() >= cutoffTime);
+  }, [openInterestData, timeRange]);
 
   // 计算价格变化
   const priceChange = useMemo(() => {
@@ -32,7 +39,7 @@ export default function PriceChart({ data, timeRange, coinSymbol }: PriceChartPr
 
   const option = {
     title: { 
-      text: `${coinSymbol} - 价格走势`,
+      text: `${coinSymbol} - 价格与持仓量走势`,
       left: 20,
       top: 10,
       textStyle: {
@@ -43,9 +50,23 @@ export default function PriceChart({ data, timeRange, coinSymbol }: PriceChartPr
     tooltip: {
       trigger: 'axis',
       formatter: (params: any) => {
-        const point = params[0];
-        return `${point.name}<br/>价格: $${point.value.toFixed(8)}`;
+        let result = params[0].name + '<br/>';
+        params.forEach((item: any) => {
+          if (item.seriesName === '价格') {
+            result += `${item.marker}${item.seriesName}: $${item.value.toFixed(8)}<br/>`;
+          } else if (item.seriesName === '持仓量') {
+            const oi = item.value;
+            const oiStr = oi >= 1000000 ? `$${(oi / 1000000).toFixed(2)}M` : `$${oi.toFixed(0)}`;
+            result += `${item.marker}${item.seriesName}: ${oiStr}<br/>`;
+          }
+        });
+        return result;
       }
+    },
+    legend: {
+      data: ['价格', '持仓量'],
+      top: 40,
+      left: 20
     },
     xAxis: {
       type: 'category',
@@ -57,30 +78,59 @@ export default function PriceChart({ data, timeRange, coinSymbol }: PriceChartPr
         }
       }
     },
-    yAxis: {
-      type: 'value',
-      axisLabel: {
-        formatter: (value: number) => `$${value.toFixed(6)}`
-      }
-    },
-    series: [{
-      name: '价格',
-      type: 'line',
-      smooth: true,
-      data: filteredData.map(d => d.value),
-      lineStyle: { color: '#3b82f6', width: 2 },
-      areaStyle: {
-        color: {
-          type: 'linear',
-          x: 0, y: 0, x2: 0, y2: 1,
-          colorStops: [
-            { offset: 0, color: 'rgba(59, 130, 246, 0.3)' },
-            { offset: 1, color: 'rgba(59, 130, 246, 0.05)' }
-          ]
+    yAxis: [
+      {
+        type: 'value',
+        name: '价格',
+        position: 'left',
+        axisLabel: {
+          formatter: (value: number) => `$${value.toFixed(6)}`
+        }
+      },
+      {
+        type: 'value',
+        name: '持仓量',
+        position: 'right',
+        axisLabel: {
+          formatter: (value: number) => {
+            if (value >= 1000000) {
+              return `$${(value / 1000000).toFixed(1)}M`;
+            }
+            return `$${(value / 1000).toFixed(0)}K`;
+          }
         }
       }
-    }],
-    grid: { left: '10%', right: '5%', bottom: '15%', top: '20%' }
+    ],
+    series: [
+      {
+        name: '价格',
+        type: 'line',
+        smooth: true,
+        yAxisIndex: 0,
+        data: filteredData.map(d => d.value),
+        lineStyle: { color: '#3b82f6', width: 2 },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(59, 130, 246, 0.3)' },
+              { offset: 1, color: 'rgba(59, 130, 246, 0.05)' }
+            ]
+          }
+        }
+      },
+      {
+        name: '持仓量',
+        type: 'line',
+        smooth: true,
+        yAxisIndex: 1,
+        data: filteredOIData.map(d => d.value),
+        lineStyle: { color: '#f59e0b', width: 2 },
+        itemStyle: { color: '#f59e0b' }
+      }
+    ],
+    grid: { left: '10%', right: '12%', bottom: '15%', top: '25%' }
   };
 
   return (

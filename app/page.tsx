@@ -120,14 +120,15 @@ export default function Home() {
 
           {/* 右侧主内容 */}
           <div className="col-span-9 space-y-6">
-            {/* 价格图表 */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow">
-              <PriceChart 
-                data={coinData.price} 
-                timeRange={timeRange} 
-                coinSymbol={selectedCoin}
-              />
-            </div>
+                    {/* 价格图表 */}
+                    <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow">
+                      <PriceChart 
+                        data={coinData.price} 
+                        openInterestData={coinData.open_interest_aggregated}
+                        timeRange={timeRange} 
+                        coinSymbol={selectedCoin}
+                      />
+                    </div>
 
             {/* 多空比图表 */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow">
