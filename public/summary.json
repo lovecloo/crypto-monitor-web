@@ -8,19 +8,19 @@
     "top_position_ratio": 1.21
   },
   "PLAY": {
-    "last_updated": "2025-11-20 00:22:53",
-    "long_short_ratio": 1.7,
-    "open_interest": 2816754.4205,
-    "price": 0.02904,
-    "top_account_ratio": 1.54,
+    "last_updated": "2025-11-20 00:26:03",
+    "long_short_ratio": 1.64,
+    "open_interest": 3322887.453,
+    "price": 0.02881,
+    "top_account_ratio": 1.47,
     "top_position_ratio": 1.85
   },
   "PORT3": {
-    "last_updated": "2025-11-20 00:22:59",
-    "long_short_ratio": 0.89,
-    "open_interest": 23294235.2852,
-    "price": 0.03515,
-    "top_account_ratio": 0.88,
+    "last_updated": "2025-11-20 00:26:11",
+    "long_short_ratio": 0.9,
+    "open_interest": 23364344.2613,
+    "price": 0.03523,
+    "top_account_ratio": 0.89,
     "top_position_ratio": 0.47
   },
   "SKYAI": {
@@ -32,12 +32,12 @@
     "top_position_ratio": 1.55
   },
   "SOLV": {
-    "last_updated": "2025-11-20 00:23:08",
-    "long_short_ratio": 0.63,
-    "open_interest": 19252521.4585,
-    "price": 0.01633,
+    "last_updated": "2025-11-20 00:26:19",
+    "long_short_ratio": 0.62,
+    "open_interest": 19233989.1729,
+    "price": 0.01632,
     "top_account_ratio": 0.73,
-    "top_position_ratio": 1.44
+    "top_position_ratio": 1.45
   },
   "TAG": {
     "last_updated": "2025-11-20 00:25:03",
