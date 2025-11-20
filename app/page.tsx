@@ -21,9 +21,16 @@ export default function Home() {
   useEffect(() => {
     // 加载数据的函数
     const loadData = () => {
-      // 使用时间戳破解CDN缓存（每分钟变化一次）
-      const timestamp = Math.floor(Date.now() / 60000);
-      fetch(`${GITHUB_RAW_BASE}/data.json?t=${timestamp}`)
+      // 使用实时时间戳破解CDN缓存
+      const timestamp = Date.now();
+      fetch(`${GITHUB_RAW_BASE}/data.json?t=${timestamp}&_=${Math.random()}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      })
         .then(res => res.json())
         .then(jsonData => {
           setData(jsonData);
@@ -38,10 +45,10 @@ export default function Home() {
     // 初始加载
     loadData();
 
-    // 每1分钟刷新一次数据
+    // 每30秒刷新一次数据（更频繁）
     const interval = setInterval(() => {
       loadData();
-    }, 60000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
