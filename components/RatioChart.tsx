@@ -89,7 +89,9 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
     <div className="flex-1 bg-gray-50 rounded-lg p-3 border border-gray-200">
       <div className="text-xs text-gray-600 mb-1">{title}</div>
       <div className="flex items-center justify-between">
-        <span className="text-lg font-bold text-gray-800">{change.current?.toFixed(2) || '0.00'}</span>
+        <span className={`text-lg font-bold ${change.percent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+          {change.current?.toFixed(2) || '0.00'}
+        </span>
         <div className="flex items-center gap-1">
           <span className={`text-sm font-semibold ${change.percent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
             {change.percent >= 0 ? '▲' : '▼'}
