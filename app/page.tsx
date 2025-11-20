@@ -15,24 +15,32 @@ export default function Home() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  // GitHub Raw URL - 从data分支读取数据
+  const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/lovecloo/crypto-monitor-web/data/public';
+
   useEffect(() => {
-    // 加载数据
-    fetch('/data.json')
-      .then(res => res.json())
-      .then(jsonData => {
-        setData(jsonData);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('加载数据失败:', err);
-        setLoading(false);
-      });
+    // 加载数据的函数
+    const loadData = () => {
+      // 使用时间戳破解CDN缓存（每分钟变化一次）
+      const timestamp = Math.floor(Date.now() / 60000);
+      fetch(`${GITHUB_RAW_BASE}/data.json?t=${timestamp}`)
+        .then(res => res.json())
+        .then(jsonData => {
+          setData(jsonData);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error('加载数据失败:', err);
+          setLoading(false);
+        });
+    };
+
+    // 初始加载
+    loadData();
 
     // 每1分钟刷新一次数据
     const interval = setInterval(() => {
-      fetch('/data.json?' + Date.now()) // 防止缓存
-        .then(res => res.json())
-        .then(jsonData => setData(jsonData));
+      loadData();
     }, 60000);
 
     return () => clearInterval(interval);
