@@ -8,19 +8,19 @@
     "top_position_ratio": 1.26
   },
   "PLAY": {
-    "last_updated": "2025-11-20 09:40:03",
-    "long_short_ratio": 1.72,
+    "last_updated": "2025-11-20 09:42:03",
+    "long_short_ratio": 1.73,
     "open_interest": 2632751.4478,
-    "price": 0.02921,
+    "price": 0.02929,
     "top_account_ratio": 1.57,
     "top_position_ratio": 1.85
   },
   "PORT3": {
-    "last_updated": "2025-11-20 09:40:10",
-    "long_short_ratio": 0.89,
-    "open_interest": 23176212.5525,
-    "price": 0.03525,
-    "top_account_ratio": 0.88,
+    "last_updated": "2025-11-20 09:42:09",
+    "long_short_ratio": 0.9,
+    "open_interest": 23144452.1054,
+    "price": 0.03518,
+    "top_account_ratio": 0.89,
     "top_position_ratio": 0.48
   },
   "SKYAI": {
