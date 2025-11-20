@@ -15,20 +15,17 @@ export default function Home() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // GitHub Raw URL - 从data分支读取数据
-  const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/lovecloo/crypto-monitor-web/data/public';
-
   useEffect(() => {
     // 加载数据的函数
     const loadData = () => {
-      // 使用实时时间戳破解CDN缓存
+      // 从GitHub Gist读取数据
+      const GIST_ID = '9ce448847985c295b725dc774130964f';
       const timestamp = Date.now();
-      fetch(`${GITHUB_RAW_BASE}/data.json?t=${timestamp}&_=${Math.random()}`, {
+      fetch(`https://gist.githubusercontent.com/lovecloo/${GIST_ID}/raw/data.json?t=${timestamp}`, {
         cache: 'no-store',
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache',
-          'Expires': '0'
+          'Pragma': 'no-cache'
         }
       })
         .then(res => res.json())
@@ -45,7 +42,7 @@ export default function Home() {
     // 初始加载
     loadData();
 
-    // 每30秒刷新一次数据（更频繁）
+    // 每30秒刷新一次数据
     const interval = setInterval(() => {
       loadData();
     }, 30000);

@@ -1,8 +1,10 @@
 {
+  "github": {
+    "silent": true
+  },
   "git": {
     "deploymentEnabled": {
-      "main": true,
-      "data": false
+      "main": true
     }
   }
 }
