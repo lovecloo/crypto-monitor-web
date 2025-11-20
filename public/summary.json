@@ -8,18 +8,18 @@
     "top_position_ratio": 1.28
   },
   "PLAY": {
-    "last_updated": "2025-11-20 09:42:03",
+    "last_updated": "2025-11-20 09:44:03",
     "long_short_ratio": 1.73,
-    "open_interest": 2629060.4457,
-    "price": 0.02929,
+    "open_interest": 2625978.762,
+    "price": 0.02926,
     "top_account_ratio": 1.57,
     "top_position_ratio": 1.85
   },
   "PORT3": {
-    "last_updated": "2025-11-20 09:42:09",
+    "last_updated": "2025-11-20 09:44:09",
     "long_short_ratio": 0.9,
-    "open_interest": 23144452.1054,
-    "price": 0.03518,
+    "open_interest": 23144116.5499,
+    "price": 0.03517,
     "top_account_ratio": 0.89,
     "top_position_ratio": 0.48
   },
@@ -32,10 +32,10 @@
     "top_position_ratio": 1.46
   },
   "SOLV": {
-    "last_updated": "2025-11-20 09:43:24",
+    "last_updated": "2025-11-20 09:44:15",
     "long_short_ratio": 0.66,
-    "open_interest": 18554492.0119,
-    "price": 0.01619,
+    "open_interest": 18580588.8027,
+    "price": 0.01622,
     "top_account_ratio": 0.78,
     "top_position_ratio": 1.41
   },
