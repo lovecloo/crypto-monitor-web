@@ -13,6 +13,7 @@ export default function Home() {
   const [timeRange, setTimeRange] = useState(24); // 小时
   const [customDateRange, setCustomDateRange] = useState<{start: Date | null, end: Date | null}>({start: null, end: null});
   const [data, setData] = useState<any>(null);
+  const [summary, setSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,10 +32,13 @@ export default function Home() {
       })
         .then(res => res.json())
         .then(gistData => {
-          // 从Gist响应中提取data.json的内容
+          // 从Gist响应中提取data.json和summary.json的内容
           const dataContent = gistData.files['data.json'].content;
+          const summaryContent = gistData.files['summary.json'].content;
           const jsonData = JSON.parse(dataContent);
+          const summaryData = JSON.parse(summaryContent);
           setData(jsonData);
+          setSummary(summaryData);
           setLoading(false);
         })
         .catch(err => {
@@ -163,6 +167,7 @@ export default function Home() {
                 data={coinData} 
                 timeRange={timeRange}
                 coinSymbol={selectedCoin}
+                lastUpdated={summary?.[selectedCoin]?.last_updated}
               />
             </div>
           </div>

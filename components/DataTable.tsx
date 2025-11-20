@@ -6,9 +6,10 @@ interface DataTableProps {
   data: any;
   timeRange: number;
   coinSymbol: string;
+  lastUpdated?: string;
 }
 
-export default function DataTable({ data, timeRange, coinSymbol }: DataTableProps) {
+export default function DataTable({ data, timeRange, coinSymbol, lastUpdated }: DataTableProps) {
   const tableData = useMemo(() => {
     if (!data.price) return [];
     
@@ -65,10 +66,22 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
 
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <span>📋</span>
-        <span>{coinSymbol} 详细数据</span>
-      </h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span>📋</span>
+          <span>{coinSymbol} 详细数据</span>
+        </h3>
+        {lastUpdated && (
+          <span className="text-sm text-gray-500">
+            最后更新: {new Date(lastUpdated).toLocaleString('zh-CN', {
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit'
+            })}
+          </span>
+        )}
+      </div>
       <div className="overflow-x-auto rounded-lg border border-gray-200">
         <table className="w-full text-sm">
           <thead className="bg-gradient-to-r from-blue-50 to-purple-50">
