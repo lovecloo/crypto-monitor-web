@@ -18,22 +18,23 @@ export default function Home() {
   useEffect(() => {
     // 加载数据的函数
     const loadData = () => {
-      // 从GitHub API读取Gist数据
       const GIST_ID = '9ce448847985c295b725dc774130964f';
       const timestamp = Date.now();
       
-      // 使用GitHub API获取Gist内容
-      fetch(`https://api.github.com/gists/${GIST_ID}?t=${timestamp}`, {
+      // 直接从Gist Raw URL读取data.json（更可靠）
+      fetch(`https://gist.githubusercontent.com/lovecloo/${GIST_ID}/raw/data.json?t=${timestamp}`, {
         cache: 'no-store',
         headers: {
-          'Accept': 'application/vnd.github.v3+json'
+          'Cache-Control': 'no-cache'
         }
       })
-        .then(res => res.json())
-        .then(gistData => {
-          // 从Gist响应中提取data.json的内容
-          const dataContent = gistData.files['data.json'].content;
-          const jsonData = JSON.parse(dataContent);
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(jsonData => {
           setData(jsonData);
           setLoading(false);
         })
@@ -171,3 +172,4 @@ export default function Home() {
     </div>
   );
 }
+
