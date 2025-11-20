@@ -18,18 +18,22 @@ export default function Home() {
   useEffect(() => {
     // 加载数据的函数
     const loadData = () => {
-      // 从GitHub Gist读取数据
+      // 从GitHub API读取Gist数据
       const GIST_ID = '9ce448847985c295b725dc774130964f';
       const timestamp = Date.now();
-      fetch(`https://gist.githubusercontent.com/lovecloo/${GIST_ID}/raw/data.json?t=${timestamp}`, {
+      
+      // 使用GitHub API获取Gist内容
+      fetch(`https://api.github.com/gists/${GIST_ID}?t=${timestamp}`, {
         cache: 'no-store',
         headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache'
+          'Accept': 'application/vnd.github.v3+json'
         }
       })
         .then(res => res.json())
-        .then(jsonData => {
+        .then(gistData => {
+          // 从Gist响应中提取data.json的内容
+          const dataContent = gistData.files['data.json'].content;
+          const jsonData = JSON.parse(dataContent);
           setData(jsonData);
           setLoading(false);
         })
