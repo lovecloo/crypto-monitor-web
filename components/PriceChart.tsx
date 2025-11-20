@@ -149,7 +149,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       {/* 价格信息栏 */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <span className="text-2xl font-bold text-gray-800">
+          <span className={`text-2xl font-bold ${priceChange.percent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
             ${latestPrice.toFixed(latestPrice < 1 ? 8 : latestPrice < 10 ? 5 : 2)}
           </span>
         </div>
