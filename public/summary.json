@@ -1,50 +1,50 @@
 {
   "BANANAS31": {
-    "last_updated": "2025-11-20 01:02:55",
-    "long_short_ratio": 1.2,
-    "open_interest": 10728075.0567,
-    "price": 0.002676,
-    "top_account_ratio": 1.44,
-    "top_position_ratio": 1.24
+    "last_updated": "2025-11-20 09:22:41",
+    "long_short_ratio": 1.335,
+    "open_interest": 10663404.126,
+    "price": 0.002739,
+    "top_account_ratio": 1.34,
+    "top_position_ratio": 1.25
   },
   "PLAY": {
-    "last_updated": "2025-11-20 01:03:40",
-    "long_short_ratio": 1.74,
-    "open_interest": 2580045.1131,
-    "price": 0.02886,
-    "top_account_ratio": 1.55,
-    "top_position_ratio": 1.86
+    "last_updated": "2025-11-20 09:21:28",
+    "long_short_ratio": 1.72,
+    "open_interest": 2761392.9631,
+    "price": 0.02945,
+    "top_account_ratio": 1.53,
+    "top_position_ratio": 1.84
   },
   "PORT3": {
-    "last_updated": "2025-11-20 01:03:47",
-    "long_short_ratio": 0.85,
-    "open_interest": 23500570.9319,
-    "price": 0.03531,
-    "top_account_ratio": 0.84,
+    "last_updated": "2025-11-20 09:21:34",
+    "long_short_ratio": 0.88,
+    "open_interest": 23279084.2111,
+    "price": 0.0354,
+    "top_account_ratio": 0.88,
     "top_position_ratio": 0.48
   },
   "SKYAI": {
-    "last_updated": "2025-11-20 01:02:48",
-    "long_short_ratio": 1.09,
-    "open_interest": 8575669.4705,
-    "price": 0.02154,
-    "top_account_ratio": 1.07,
-    "top_position_ratio": 1.5
+    "last_updated": "2025-11-20 09:22:35",
+    "long_short_ratio": 1.175,
+    "open_interest": 8700300.8931,
+    "price": 0.02238,
+    "top_account_ratio": 1.0,
+    "top_position_ratio": 1.48
   },
   "SOLV": {
-    "last_updated": "2025-11-20 01:03:54",
-    "long_short_ratio": 0.62,
-    "open_interest": 19299985.1352,
-    "price": 0.01635,
-    "top_account_ratio": 0.73,
-    "top_position_ratio": 1.44
+    "last_updated": "2025-11-20 09:21:39",
+    "long_short_ratio": 0.65,
+    "open_interest": 18595388.9288,
+    "price": 0.01623,
+    "top_account_ratio": 0.77,
+    "top_position_ratio": 1.41
   },
   "TAG": {
-    "last_updated": "2025-11-20 01:02:40",
-    "long_short_ratio": 1.52,
-    "open_interest": 4926602.6766,
-    "price": 0.0005194,
-    "top_account_ratio": 1.36,
+    "last_updated": "2025-11-20 09:22:28",
+    "long_short_ratio": 1.49,
+    "open_interest": 5095144.4091,
+    "price": 0.0005282,
+    "top_account_ratio": 1.29,
     "top_position_ratio": 1.61
   }
 }
