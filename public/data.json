@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-11-20 09:44:15",
+  "last_updated": "2025-11-20 09:44:58",
   "symbols": [
     "TAG",
     "SKYAI",
@@ -8,7 +8,7 @@
     "BANANAS31",
     "SOLV"
   ],
-  "data_points": 3191,
+  "data_points": 3193,
   "data": {
     "TAG": {
       "price": [
@@ -463,6 +463,10 @@
         {
           "time": "2025-11-20 09:43:03",
           "value": 0.0005301
+        },
+        {
+          "time": "2025-11-20 09:44:16",
+          "value": 0.0005296
         }
       ],
       "open_interest_aggregated": [
@@ -921,6 +925,10 @@
         {
           "time": "2025-11-20 09:43:03",
           "value": 5104140.4331
+        },
+        {
+          "time": "2025-11-20 09:44:16",
+          "value": 5104421.8186
         }
       ],
       "long_short_ratio": [
