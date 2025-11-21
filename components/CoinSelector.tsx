@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 interface CoinSelectorProps {
   coins: string[];
   selected: string;
@@ -9,12 +7,12 @@ interface CoinSelectorProps {
 }
 
 const coinIcons: { [key: string]: string } = {
-  'TAG': '/icons/TAG.svg',
-  'SKYAI': '/icons/SKYAI.svg',
-  'BANANAS31': '/icons/BANANAS31.svg',
-  'PLAY': '/icons/PLAY.svg',
-  'SOLV': '/icons/SOLV.svg',
-  'PORT3': '/icons/PORT3.svg',
+  'TAG': '/icons/TAG.png',
+  'SKYAI': '/icons/SKYAI.png',
+  'BANANAS31': '/icons/BANANAS31.png',
+  'PLAY': '/icons/PLAY.png',
+  'SOLV': '/icons/SOLV.png',
+  'PORT3': '/icons/PORT3.png',
 };
 
 export default function CoinSelector({ coins, selected, onChange }: CoinSelectorProps) {
@@ -36,12 +34,10 @@ export default function CoinSelector({ coins, selected, onChange }: CoinSelector
           <div className="flex items-center justify-between">
             <span className="flex items-center gap-2">
               {coinIcons[coin] ? (
-                <Image 
+                <img 
                   src={coinIcons[coin]} 
                   alt={coin} 
-                  width={20} 
-                  height={20}
-                  className="w-5 h-5"
+                  className="w-5 h-5 object-contain"
                 />
               ) : (
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
