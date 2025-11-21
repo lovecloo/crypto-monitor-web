@@ -37,6 +37,34 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
 
   const latestPrice = filteredData.length > 0 ? filteredData[filteredData.length - 1].value : 0;
 
+  // 计算价格的动态Y轴范围
+  const priceRange = useMemo(() => {
+    if (!filteredData || filteredData.length === 0) return { min: 0, max: 1 };
+    const prices = filteredData.map(d => d.value);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const range = maxPrice - minPrice;
+    // 留出10%的上下空间
+    return {
+      min: minPrice - range * 0.1,
+      max: maxPrice + range * 0.1
+    };
+  }, [filteredData]);
+
+  // 计算持仓量的动态Y轴范围
+  const oiRange = useMemo(() => {
+    if (!filteredOIData || filteredOIData.length === 0) return { min: 0, max: 1 };
+    const ois = filteredOIData.map(d => d.value);
+    const minOI = Math.min(...ois);
+    const maxOI = Math.max(...ois);
+    const range = maxOI - minOI;
+    // 留出10%的上下空间
+    return {
+      min: minOI - range * 0.1,
+      max: maxOI + range * 0.1
+    };
+  }, [filteredOIData]);
+
   const option = {
     title: { 
       text: `${coinSymbol} - 价格与持仓量走势`,
@@ -97,6 +125,8 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       {
         type: 'value',
         position: 'left',
+        min: priceRange.min,
+        max: priceRange.max,
         axisLabel: {
           formatter: (value: number) => `$${value.toFixed(6)}`
         },
@@ -109,6 +139,8 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       {
         type: 'value',
         position: 'right',
+        min: oiRange.min,
+        max: oiRange.max,
         axisLabel: {
           formatter: (value: number) => {
             if (value >= 1000000) {

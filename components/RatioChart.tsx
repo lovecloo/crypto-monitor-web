@@ -39,6 +39,24 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
     topPosition: calculateChange(filteredData.topPosition)
   };
 
+  // 计算动态Y轴范围
+  const yAxisRange = useMemo(() => {
+    const allValues = [
+      ...filteredData.longShort.map(d => d.value),
+      ...filteredData.topAccount.map(d => d.value),
+      ...filteredData.topPosition.map(d => d.value)
+    ];
+    if (allValues.length === 0) return { min: 0, max: 2 };
+    const minVal = Math.min(...allValues);
+    const maxVal = Math.max(...allValues);
+    const range = maxVal - minVal;
+    // 留出10%的上下空间
+    return {
+      min: minVal - range * 0.1,
+      max: maxVal + range * 0.1
+    };
+  }, [filteredData]);
+
   const option = {
     title: { 
       text: `${coinSymbol} - 多空比对比`,
@@ -78,7 +96,11 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
       },
       boundaryGap: false
     },
-    yAxis: { type: 'value' },
+    yAxis: { 
+      type: 'value',
+      min: yAxisRange.min,
+      max: yAxisRange.max
+    },
     series: [
       {
         name: '全网多空比',
