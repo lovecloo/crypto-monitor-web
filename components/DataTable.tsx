@@ -206,6 +206,17 @@ export default function DataTable({ data, timeRange, customDateRange, coinSymbol
         </p>
         <div className="flex items-center gap-2">
           <button
+            onClick={() => setCurrentPage(1)}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === 1
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-green-500 text-white hover:bg-green-600'
+            }`}
+          >
+            首页
+          </button>
+          <button
             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
             className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
@@ -229,6 +240,17 @@ export default function DataTable({ data, timeRange, customDateRange, coinSymbol
             }`}
           >
             下一页
+          </button>
+          <button
+            onClick={() => setCurrentPage(totalPages)}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === totalPages
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-green-500 text-white hover:bg-green-600'
+            }`}
+          >
+            尾页
           </button>
         </div>
       </div>
