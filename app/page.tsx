@@ -146,7 +146,8 @@ export default function Home() {
                       <PriceChart 
                         data={coinData.price} 
                         openInterestData={coinData.open_interest_aggregated}
-                        timeRange={timeRange} 
+                        timeRange={timeRange}
+                        customDateRange={customDateRange}
                         coinSymbol={selectedCoin}
                       />
                     </div>
@@ -158,6 +159,7 @@ export default function Home() {
                 topAccount={coinData.top_account_ratio}
                 topPosition={coinData.top_position_ratio}
                 timeRange={timeRange}
+                customDateRange={customDateRange}
                 coinSymbol={selectedCoin}
               />
             </div>
@@ -165,8 +167,9 @@ export default function Home() {
             {/* 数据表格 */}
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow">
               <DataTable 
-                data={coinData} 
+                data={coinData}
                 timeRange={timeRange}
+                customDateRange={customDateRange}
                 coinSymbol={selectedCoin}
               />
             </div>

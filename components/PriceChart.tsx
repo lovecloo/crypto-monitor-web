@@ -9,21 +9,46 @@ interface PriceChartProps {
   data: Array<{ time: string; value: number }>;
   openInterestData: Array<{ time: string; value: number }>;
   timeRange: number;
+  customDateRange: {start: Date | null, end: Date | null};
   coinSymbol: string;
 }
 
-export default function PriceChart({ data, openInterestData, timeRange, coinSymbol }: PriceChartProps) {
+export default function PriceChart({ data, openInterestData, timeRange, customDateRange, coinSymbol }: PriceChartProps) {
   const filteredData = useMemo(() => {
     if (!data) return [];
+    
+    // 优先使用自定义日期范围
+    if (customDateRange.start || customDateRange.end) {
+      const startTime = customDateRange.start ? customDateRange.start.getTime() : 0;
+      const endTime = customDateRange.end ? customDateRange.end.getTime() : Date.now();
+      return data.filter(d => {
+        const time = new Date(d.time).getTime();
+        return time >= startTime && time <= endTime;
+      });
+    }
+    
+    // 否则使用快速时间范围
     const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
     return data.filter(d => new Date(d.time).getTime() >= cutoffTime);
-  }, [data, timeRange]);
+  }, [data, timeRange, customDateRange]);
 
   const filteredOIData = useMemo(() => {
     if (!openInterestData) return [];
+    
+    // 优先使用自定义日期范围
+    if (customDateRange.start || customDateRange.end) {
+      const startTime = customDateRange.start ? customDateRange.start.getTime() : 0;
+      const endTime = customDateRange.end ? customDateRange.end.getTime() : Date.now();
+      return openInterestData.filter(d => {
+        const time = new Date(d.time).getTime();
+        return time >= startTime && time <= endTime;
+      });
+    }
+    
+    // 否则使用快速时间范围
     const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
     return openInterestData.filter(d => new Date(d.time).getTime() >= cutoffTime);
-  }, [openInterestData, timeRange]);
+  }, [openInterestData, timeRange, customDateRange]);
 
   // 计算价格变化
   const priceChange = useMemo(() => {
@@ -191,8 +216,29 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
     grid: { left: '10%', right: '12%', bottom: '15%', top: '30%' }
   };
 
+  // 检查是否有数据
+  if (filteredData.length === 0) {
+    return (
+      <div>
+        <h3 className="text-lg font-semibold mb-4">{coinSymbol} - 价格与持仓量走势</h3>
+        <div className="flex items-center justify-center h-64 text-gray-500 bg-gray-50 rounded-lg">
+          <div className="text-center">
+            <p className="text-lg mb-2">📭 该时间段暂无数据</p>
+            <p className="text-sm">请选择其他日期范围或使用快速时间选择</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
+      {/* 日期范围提示 */}
+      {(customDateRange.start || customDateRange.end) && (
+        <div className="text-xs text-blue-600 mb-2">
+          📅 自定义日期范围: {customDateRange.start?.toLocaleDateString('zh-CN') || '开始'} - {customDateRange.end?.toLocaleDateString('zh-CN') || '现在'}
+        </div>
+      )}
       {/* 价格信息栏 */}
       <div className="flex items-center justify-between mb-4">
         <div>

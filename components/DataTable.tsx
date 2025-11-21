@@ -5,19 +5,32 @@ import { useMemo, useState } from 'react';
 interface DataTableProps {
   data: any;
   timeRange: number;
+  customDateRange: {start: Date | null, end: Date | null};
   coinSymbol: string;
 }
 
-export default function DataTable({ data, timeRange, coinSymbol }: DataTableProps) {
+export default function DataTable({ data, timeRange, customDateRange, coinSymbol }: DataTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const tableData = useMemo(() => {
     if (!data.price) return [];
     
-    const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
-    const filtered = data.price.filter((p: any) => 
-      new Date(p.time).getTime() >= cutoffTime
-    );
+    let filtered;
+    // 优先使用自定义日期范围
+    if (customDateRange.start || customDateRange.end) {
+      const startTime = customDateRange.start ? customDateRange.start.getTime() : 0;
+      const endTime = customDateRange.end ? customDateRange.end.getTime() : Date.now();
+      filtered = data.price.filter((p: any) => {
+        const time = new Date(p.time).getTime();
+        return time >= startTime && time <= endTime;
+      });
+    } else {
+      // 否则使用快速时间范围
+      const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
+      filtered = data.price.filter((p: any) => 
+        new Date(p.time).getTime() >= cutoffTime
+      );
+    }
 
     return filtered.map((p: any, idx: number) => {
       const oi = data.open_interest_aggregated?.find((d: any) => d.time === p.time);
@@ -63,7 +76,7 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
   // 重置页码当数据变化时
   useMemo(() => {
     setCurrentPage(1);
-  }, [coinSymbol, timeRange]);
+  }, [coinSymbol, timeRange, customDateRange]);
 
   const ValueWithChange = ({ value, change, prefix = '', suffix = '' }: any) => (
     <div className="flex items-center justify-end gap-1">
@@ -82,6 +95,21 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
         <span>📋</span>
         <span>{coinSymbol} 详细数据</span>
       </h3>
+      {/* 日期范围提示 */}
+      {(customDateRange.start || customDateRange.end) && (
+        <div className="text-xs text-blue-600 mb-2">
+          📅 自定义日期范围: {customDateRange.start?.toLocaleDateString('zh-CN') || '开始'} - {customDateRange.end?.toLocaleDateString('zh-CN') || '现在'}
+        </div>
+      )}
+      {tableData.length === 0 ? (
+        <div className="flex items-center justify-center h-64 text-gray-500 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="text-center">
+            <p className="text-lg mb-2">📭 该时间段暂无数据</p>
+            <p className="text-sm">请选择其他日期范围或使用快速时间选择</p>
+          </div>
+        </div>
+      ) : (
+        <>
       <div className="overflow-x-auto rounded-lg border border-gray-200">
         <table className="w-full text-sm">
           <thead className="bg-gradient-to-r from-green-50 to-emerald-50">
@@ -204,6 +232,8 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
           </button>
         </div>
       </div>
+        </>
+      )}
     </div>
   );
 }

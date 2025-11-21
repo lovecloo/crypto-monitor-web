@@ -10,18 +10,40 @@ interface RatioChartProps {
   topAccount: Array<{ time: string; value: number }>;
   topPosition: Array<{ time: string; value: number }>;
   timeRange: number;
+  customDateRange: {start: Date | null, end: Date | null};
   coinSymbol: string;
 }
 
-export default function RatioChart({ longShort, topAccount, topPosition, timeRange, coinSymbol }: RatioChartProps) {
+export default function RatioChart({ longShort, topAccount, topPosition, timeRange, customDateRange, coinSymbol }: RatioChartProps) {
   const filteredData = useMemo(() => {
+    // 优先使用自定义日期范围
+    if (customDateRange.start || customDateRange.end) {
+      const startTime = customDateRange.start ? customDateRange.start.getTime() : 0;
+      const endTime = customDateRange.end ? customDateRange.end.getTime() : Date.now();
+      return {
+        longShort: longShort?.filter(d => {
+          const time = new Date(d.time).getTime();
+          return time >= startTime && time <= endTime;
+        }) || [],
+        topAccount: topAccount?.filter(d => {
+          const time = new Date(d.time).getTime();
+          return time >= startTime && time <= endTime;
+        }) || [],
+        topPosition: topPosition?.filter(d => {
+          const time = new Date(d.time).getTime();
+          return time >= startTime && time <= endTime;
+        }) || []
+      };
+    }
+    
+    // 否则使用快速时间范围
     const cutoffTime = Date.now() - timeRange * 60 * 60 * 1000;
     return {
       longShort: longShort?.filter(d => new Date(d.time).getTime() >= cutoffTime) || [],
       topAccount: topAccount?.filter(d => new Date(d.time).getTime() >= cutoffTime) || [],
       topPosition: topPosition?.filter(d => new Date(d.time).getTime() >= cutoffTime) || []
     };
-  }, [longShort, topAccount, topPosition, timeRange]);
+  }, [longShort, topAccount, topPosition, timeRange, customDateRange]);
 
   // 计算各指标的变化
   const calculateChange = (data: Array<{ time: string; value: number }>) => {
@@ -152,8 +174,29 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
     </div>
   );
 
+  // 检查是否有数据
+  if (filteredData.longShort.length === 0 && filteredData.topAccount.length === 0 && filteredData.topPosition.length === 0) {
+    return (
+      <div>
+        <h3 className="text-lg font-semibold mb-4">{coinSymbol} - 多空比对比</h3>
+        <div className="flex items-center justify-center h-64 text-gray-500 bg-gray-50 rounded-lg">
+          <div className="text-center">
+            <p className="text-lg mb-2">📭 该时间段暂无数据</p>
+            <p className="text-sm">请选择其他日期范围或使用快速时间选择</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
+      {/* 日期范围提示 */}
+      {(customDateRange.start || customDateRange.end) && (
+        <div className="text-xs text-blue-600 mb-2">
+          📅 自定义日期范围: {customDateRange.start?.toLocaleDateString('zh-CN') || '开始'} - {customDateRange.end?.toLocaleDateString('zh-CN') || '现在'}
+        </div>
+      )}
       {/* 指标卡片 */}
       <div className="flex gap-3 mb-4">
         <RatioCard title="全网多空比" change={changes.longShort} color="green" />
