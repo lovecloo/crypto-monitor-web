@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 interface DataTableProps {
   data: any;
@@ -9,6 +9,8 @@ interface DataTableProps {
 }
 
 export default function DataTable({ data, timeRange, coinSymbol }: DataTableProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
   const tableData = useMemo(() => {
     if (!data.price) return [];
     
@@ -52,6 +54,17 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
     }).reverse(); // 最新的在前
   }, [data, timeRange]);
 
+  // 计算分页
+  const totalPages = Math.ceil(tableData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = tableData.slice(startIndex, endIndex);
+
+  // 重置页码当数据变化时
+  useMemo(() => {
+    setCurrentPage(1);
+  }, [coinSymbol, timeRange]);
+
   const ValueWithChange = ({ value, change, prefix = '', suffix = '' }: any) => (
     <div className="flex items-center justify-end gap-1">
       <span className="font-mono">{prefix}{value}{suffix}</span>
@@ -71,7 +84,7 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
       </h3>
       <div className="overflow-x-auto rounded-lg border border-gray-200">
         <table className="w-full text-sm">
-          <thead className="bg-gradient-to-r from-blue-50 to-purple-50">
+          <thead className="bg-gradient-to-r from-green-50 to-emerald-50">
             <tr>
               <th className="px-4 py-3 text-left font-semibold text-gray-700">时间</th>
               <th className="px-4 py-3 text-right font-semibold text-gray-700">价格</th>
@@ -82,8 +95,8 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
             </tr>
           </thead>
           <tbody className="bg-white">
-            {tableData.slice(0, 20).map((row: any, i: number) => (
-              <tr key={i} className="border-b border-gray-100 hover:bg-blue-50/30 transition-colors">
+            {currentData.map((row: any, i: number) => (
+              <tr key={i} className="border-b border-gray-100 hover:bg-green-50/30 transition-colors">
                 <td className="px-4 py-3 text-gray-600">
                   {new Date(row.time).toLocaleString('zh-CN', {
                     month: '2-digit',
@@ -157,9 +170,40 @@ export default function DataTable({ data, timeRange, coinSymbol }: DataTableProp
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-gray-500 mt-3">
-        💡 显示最近 {Math.min(20, tableData.length)} 条记录，按时间倒序排列
-      </p>
+      
+      {/* 分页控件 */}
+      <div className="flex items-center justify-between mt-4">
+        <p className="text-xs text-gray-500">
+          💡 共 {tableData.length} 条记录，每页显示 {itemsPerPage} 条
+        </p>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+            disabled={currentPage === 1}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === 1
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-green-500 text-white hover:bg-green-600'
+            }`}
+          >
+            上一页
+          </button>
+          <span className="text-sm text-gray-600">
+            第 {currentPage} / {totalPages} 页
+          </span>
+          <button
+            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+            disabled={currentPage === totalPages}
+            className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
+              currentPage === totalPages
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-green-500 text-white hover:bg-green-600'
+            }`}
+          >
+            下一页
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

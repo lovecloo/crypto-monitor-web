@@ -34,7 +34,7 @@ export default function TimeRangeSelector({ value, onChange }: TimeRangeSelector
             px-3 py-2 rounded-lg text-xs font-medium
             transition-all duration-200 transform
             ${value === range.value
-              ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md scale-105'
+              ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-md scale-105'
               : 'bg-gray-50 hover:bg-gray-100 text-gray-700 hover:scale-102'
             }
           `}
