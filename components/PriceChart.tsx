@@ -64,37 +64,31 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       }
     },
     legend: {
-      data: [
-        { name: '价格', icon: 'path://M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z' },
-        { name: '持仓量', icon: 'path://M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z' }
-      ],
+      data: ['价格', '持仓量'],
       top: 50,
       left: 'center',
-      itemGap: 30,
-      itemWidth: 20,
-      itemHeight: 20
+      itemGap: 30
     },
     xAxis: {
       type: 'category',
       data: filteredData.map(d => d.time),
       axisLabel: {
-        formatter: (value: string, index: number) => {
+        formatter: (value: string) => {
           const date = new Date(value);
           const hours = date.getHours();
           const minutes = date.getMinutes();
-          // 每隔5分钟显示：0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55
-          if (minutes % 5 === 0) {
-            return `${hours}:${String(minutes).padStart(2, '0')}`;
-          }
-          return '';
+          return `${hours}:${String(minutes).padStart(2, '0')}`;
         },
-        rotate: 45,  // 倾斜45度，避免重叠
-        fontSize: 10,
-        interval: 0  // 显示所有标签（由formatter控制显示哪些）
+        rotate: 0,
+        fontSize: 11,
+        interval: 'auto',  // 自动计算间隔，避免重叠
+        showMinLabel: true,
+        showMaxLabel: true
       },
       axisTick: {
         alignWithLabel: true
-      }
+      },
+      boundaryGap: false
     },
     yAxis: [
       {
