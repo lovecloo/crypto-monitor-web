@@ -67,7 +67,10 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       data: ['价格', '持仓量'],
       top: 50,
       left: 'center',
-      itemGap: 30
+      itemGap: 30,
+      icon: 'circle',
+      itemWidth: 12,
+      itemHeight: 12
     },
     xAxis: {
       type: 'category',
@@ -129,6 +132,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         yAxisIndex: 0,
         data: filteredData.map(d => d.value),
         lineStyle: { color: '#10b981', width: 2 },
+        itemStyle: { color: '#10b981' },  // 图例圆圈颜色
         showSymbol: false,  // 隐藏数据点圆圈
         areaStyle: {
           color: {
@@ -148,6 +152,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         yAxisIndex: 1,
         data: filteredOIData.map(d => d.value),
         lineStyle: { color: '#f59e0b', width: 2 },
+        itemStyle: { color: '#f59e0b' },  // 图例圆圈颜色
         showSymbol: false  // 隐藏数据点圆圈
       }
     ],

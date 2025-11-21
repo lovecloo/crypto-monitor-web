@@ -52,7 +52,10 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
     tooltip: { trigger: 'axis' },
     legend: { 
       bottom: 0,
-      data: ['全网多空比', '大户账户多空比', '大户持仓多空比']
+      data: ['全网多空比', '大户账户多空比', '大户持仓多空比'],
+      icon: 'circle',
+      itemWidth: 12,
+      itemHeight: 12
     },
     xAxis: {
       type: 'category',
@@ -83,6 +86,7 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
         smooth: true,
         data: filteredData.longShort.map(d => d.value),
         lineStyle: { color: '#10b981', width: 2 },
+        itemStyle: { color: '#10b981' },  // 图例圆圈颜色
         showSymbol: false  // 隐藏数据点圆圈
       },
       {
@@ -91,6 +95,7 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
         smooth: true,
         data: filteredData.topAccount.map(d => d.value),
         lineStyle: { color: '#f59e0b', width: 2 },
+        itemStyle: { color: '#f59e0b' },  // 图例圆圈颜色
         showSymbol: false  // 隐藏数据点圆圈
       },
       {
@@ -99,6 +104,7 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
         smooth: true,
         data: filteredData.topPosition.map(d => d.value),
         lineStyle: { color: '#ef4444', width: 2 },
+        itemStyle: { color: '#ef4444' },  // 图例圆圈颜色
         showSymbol: false  // 隐藏数据点圆圈
       }
     ],
