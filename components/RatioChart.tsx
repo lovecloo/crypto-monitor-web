@@ -50,7 +50,12 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
       }
     },
     tooltip: { trigger: 'axis' },
-    legend: { bottom: 0 },
+    legend: { 
+      bottom: 0,
+      icon: 'circle',
+      itemWidth: 12,
+      itemHeight: 12
+    },
     xAxis: {
       type: 'category',
       data: filteredData.longShort.map(d => d.time),
@@ -58,7 +63,8 @@ export default function RatioChart({ longShort, topAccount, topPosition, timeRan
         formatter: (value: string) => {
           const date = new Date(value);
           return `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
-        }
+        },
+        interval: 4  // 每隔5个数据点显示一个标签（5分钟）
       }
     },
     yAxis: { type: 'value' },

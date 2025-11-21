@@ -68,8 +68,9 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
       top: 50,
       left: 'center',
       itemGap: 30,
-      itemWidth: 25,
-      itemHeight: 14
+      itemWidth: 14,
+      itemHeight: 14,
+      icon: 'circle'
     },
     xAxis: {
       type: 'category',
@@ -78,7 +79,8 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         formatter: (value: string) => {
           const date = new Date(value);
           return `${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
-        }
+        },
+        interval: 4  // 每隔5个数据点显示一个标签（5分钟）
       }
     },
     yAxis: [
@@ -90,7 +92,7 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         },
         axisLine: {
           lineStyle: {
-            color: '#3b82f6'
+            color: '#10b981'
           }
         }
       },
@@ -119,14 +121,14 @@ export default function PriceChart({ data, openInterestData, timeRange, coinSymb
         smooth: true,
         yAxisIndex: 0,
         data: filteredData.map(d => d.value),
-        lineStyle: { color: '#3b82f6', width: 2 },
+        lineStyle: { color: '#10b981', width: 2 },
         areaStyle: {
           color: {
             type: 'linear',
             x: 0, y: 0, x2: 0, y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(59, 130, 246, 0.3)' },
-              { offset: 1, color: 'rgba(59, 130, 246, 0.05)' }
+              { offset: 0, color: 'rgba(16, 185, 129, 0.3)' },
+              { offset: 1, color: 'rgba(16, 185, 129, 0.05)' }
             ]
           }
         }
