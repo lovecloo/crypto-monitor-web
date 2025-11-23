@@ -92,7 +92,11 @@ export default function DataTable({ data, timeRange, customDateRange, coinSymbol
   return (
     <div>
       <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <span>📋</span>
+        <img 
+          src={`/icons/${coinSymbol}.png`} 
+          alt={coinSymbol}
+          className="w-6 h-6 object-contain"
+        />
         <span>{coinSymbol} 详细数据</span>
       </h3>
       {/* 日期范围提示 */}
