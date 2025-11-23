@@ -12,7 +12,6 @@ const coinIcons: { [key: string]: string } = {
   'BANANAS31': '/icons/BANANAS31.png',
   'PLAY': '/icons/PLAY.png',
   'SOLV': '/icons/SOLV.png',
-  'PORT3': '/icons/PORT3.png',
 };
 
 export default function CoinSelector({ coins, selected, onChange }: CoinSelectorProps) {
